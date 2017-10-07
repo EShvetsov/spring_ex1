@@ -2,16 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="loggers.xml"/>
     <bean id="client" class="beans.Client">
         <constructor-arg type="int" value="1"/>
         <constructor-arg type="java.lang.String" value="Evgeniy"/>
-    </bean>
-    <bean id="eventLogger" class="loggers.ConsoleEventLogger"/>
-    <bean id="fileEventLogger" class="loggers.FileEventLogger" init-method="init">
-        <constructor-arg type="java.lang.String" value="logger.txt"/>
-    </bean>
-    <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger" init-method="init" destroy-method="destroy">
-        <constructor-arg type="java.lang.String" value="logger.txt"/>
     </bean>
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
