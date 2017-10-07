@@ -29,7 +29,6 @@ public class CacheFileEventLogger extends FileEventLogger {
             super.logEvent(event);
         }
     }
-
     private void destroy(){
         if(!cache.isEmpty()){
             writeEventsToFile();
