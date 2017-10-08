@@ -14,7 +14,7 @@ public class Event {
     private DateFormat df;
 
     public Event(Date date, DateFormat df) {
-        this.id = new SecureRandom().nextInt();
+        this.id = new SecureRandom().nextInt(100);
         this.date = date;
         this.df = df;
     }
@@ -25,10 +25,10 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", msg='" + msg + '\'' +
-                ", date=" + df.format(date) +
-                '}';
+        return "Event: {" +
+                "id = " + id +
+                ", msg = '" + msg + '\'' +
+                ", date = " + df.format(date) +
+                "}";
     }
 }

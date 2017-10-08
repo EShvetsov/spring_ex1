@@ -6,10 +6,17 @@
     <bean id="client" class="beans.Client">
         <constructor-arg type="int" value="1"/>
         <constructor-arg type="java.lang.String" value="Evgeniy"/>
+        <property name="greeting" value="Hello there!"/>
     </bean>
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
     </bean>
     <bean id="event" class="beans.Event" scope="prototype">
         <constructor-arg>
@@ -18,6 +25,11 @@
         <constructor-arg>
             <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
         </constructor-arg>
+        <property name="msg" value="Hello World!!!"/>
     </bean>
-
+    <bean id="type" class="beans.EventType" factory-method="valueOf">
+        <constructor-arg>
+            <value>ERROR</value>
+        </constructor-arg>
+    </bean>
 </beans>
